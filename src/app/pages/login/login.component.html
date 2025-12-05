@@ -1,0 +1,17 @@
+<div class="login-page">
+  <h2>{{ labels['title'][lang] }}</h2>
+  <button class="google" (click)="loginWithGoogle()">{{ labels['google'][lang] }}</button>
+
+  <form [formGroup]="form" (ngSubmit)="login()">
+    <input formControlName="email" [placeholder]="labels['email_placeholder'][lang]" />
+    <input type="password" formControlName="password" [placeholder]="labels['password_placeholder'][lang]" />
+    <button type="submit">{{ labels['button_login'][lang] }}</button>
+  </form>
+
+  <p>
+    {{ labels['register_prompt'][lang] }}
+    <button type="button" class="register-btn" (click)="register()">{{ labels['register_button'][lang] }}</button>
+  </p>
+
+  <p *ngIf="statusMessage" class="status">{{ statusMessage }}</p>
+</div>

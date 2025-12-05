@@ -1,0 +1,19 @@
+<header class="site-header">
+  <div class="brand">
+    <a routerLink="/" class="logo">Proyecto Cine</a>
+  </div>
+  <nav class="nav" [class.open]="open">
+    <a routerLink="/">{{ labels['home'][lang] }}</a>
+    <a routerLink="/peliculas">{{ labels['peliculas'][lang] }}</a>
+    <a routerLink="/cines">{{ labels['cines'][lang] }}</a>
+  </nav>
+  <div class="actions">
+    <select [(ngModel)]="lang" (ngModelChange)="onLangChange($event)">
+      <option value="es">ES</option>
+      <option value="en">EN</option>
+    </select>
+    <button (click)="theme.toggle()" class="theme-toggle">🌓</button>
+    <a routerLink="/login" class="login-btn">{{ labels['login'][lang] }}</a>
+    <button class="burger" (click)="toggleMenu()">☰</button>
+  </div>
+</header>

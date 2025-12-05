@@ -1,0 +1,38 @@
+
+<main class="page">
+  <section class="form-wrap">
+    <h2>{{ labels['title'][lang] }}</h2>
+    <form [formGroup]="form" (ngSubmit)="save()">
+      <input formControlName="nombre" [placeholder]="labels['placeholder_nombre'][lang]" />
+      <input formControlName="ciudad" [placeholder]="labels['placeholder_ciudad'][lang]" />
+      <input type="number" formControlName="capacidad" [placeholder]="labels['placeholder_capacidad'][lang]" />
+      <button type="submit">{{ labels['button_save'][lang] }}</button>
+      <button type="button" (click)="form.reset({ capacidad: 0 })">{{ labels['button_clear'][lang] }}</button>
+    </form>
+  </section>
+
+  <section class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>{{ labels['table_nombre'][lang] }}</th>
+          <th>{{ labels['table_ciudad'][lang] }}</th>
+          <th>{{ labels['table_capacidad'][lang] }}</th>
+          <th>{{ labels['table_actions'][lang] }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of cines">
+          <td>{{ c.nombre }}</td>
+          <td>{{ c.ciudad }}</td>
+          <td>{{ c.capacidad }}</td>
+          <td>
+            <button (click)="edit(c)">{{ labels['button_edit'][lang] }}</button>
+            <button (click)="remove(c.id)">{{ labels['button_delete'][lang] }}</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
